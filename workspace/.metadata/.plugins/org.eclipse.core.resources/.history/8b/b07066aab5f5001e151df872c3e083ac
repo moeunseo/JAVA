@@ -1,0 +1,16 @@
+package util;
+
+import java.sql.Connection;
+import java.util.List;
+
+import dao.MemberDAO;
+
+public class Test {
+	public static void main(String[] args) {
+		MemberDAO memberDAO =  new MemberDAO();
+		
+		// 이름도 같이 가지고 나올 수 있게 해보기
+		int result = memberDAO.womanMember("W");
+		System.out.println("현재 여자 회원은 "+ result + "명 입니다.");
+	}
+}

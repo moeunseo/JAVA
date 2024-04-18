@@ -1,0 +1,10 @@
+package vo;
+
+public class PostVo {
+	int postNumber;
+   	String postTitle;
+   	String postContest;
+   	int postViews;
+   	String postRegisterDate;
+   	int member_number;
+}

@@ -1,0 +1,8 @@
+package dto;
+
+public class CommentDTO {
+	private String postTitle; 
+	private String postContent; 
+	private String commentContent; 
+	private String memberName;
+}

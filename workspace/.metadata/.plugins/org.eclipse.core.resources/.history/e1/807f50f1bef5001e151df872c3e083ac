@@ -1,0 +1,10 @@
+package dto;
+
+// 해당 게시물에 대한 댓글 목록을 조회하기 위한 클래스
+public class PostDTO {
+	private int postNumber;
+	private String postTitle;
+	private String postComment;
+	private String commentContent;
+	private int memberNumber;
+}

@@ -1,0 +1,40 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import util.DBConnection;
+
+public class ClinicDAO {
+	private Connection con;
+	private PreparedStatement pstm;
+	private ResultSet rs;
+	
+	public void insert(int animalNumber, String disease) {
+	      String sql = "INSERT INTO TBL_CLINIC\r\n"
+	      		+ "(CLINIC_NUMBER, ANIMAL_NUMBER, CLINIC_DISEASE, CLINIC_TIME)\r\n"
+	      		+ "VALUES(SEQ_PRO.NEXTVAL, ?, ?, ?)";
+	      
+	      try {
+	         con = DBConnection.getConnection();
+	         pstm = con.prepareStatement(sql);
+	         pstm.setString(1, name);
+	         pstm.setString(2, species);
+	         pstm.setInt(3, loginUserNumber);
+	         pstm.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         System.out.println("animalDAO.insert() 도중 에러");
+	      } finally {
+	         try {
+	            DBConnection.close(con, pstm);
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	            System.out.println("animalDAO.insert() 닫는 도중 에러");
+	         }
+	      }
+	   }
+}

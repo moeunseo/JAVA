@@ -1,0 +1,44 @@
+package dao;
+
+import java.sql.SQLException;
+
+import util.DBConnection;
+
+public class MemberDAO {
+	public int womanMember() {
+		
+		
+		try {
+	         con = DBConnection.getConnection();
+	         pstm = con.prepareStatement(sql);
+	         pstm.setInt(1, loginUserNumber);
+	         rs = pstm.executeQuery();
+	         
+	         while(rs.next()) {
+	            AnimalVO animalVO = new AnimalVO();
+	            animalVO.setAnimalNumber(rs.getInt(1));
+	            animalVO.setAnimalName(rs.getString(2));
+	            animalVO.setAnimalSpeices(rs.getString(3));
+	            animalVO.setOwnerNumber(rs.getInt(4));
+	            
+	            animals.add(animalVO);
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         System.out.println("selectAll() 도중 에러");
+	      } finally {
+	         try {
+	            DBConnection.close(con, pstm, rs);
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	            System.out.println("selectAll() 닫는 도중 에러");
+	         }
+	      }
+	      return animals; 
+}
+	}
+	
+	
+	
+}

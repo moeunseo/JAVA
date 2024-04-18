@@ -1,0 +1,59 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.PostDTO;
+import util.DBConnection;
+import vo.PostVO;
+
+public class CommentDAO {
+	private Connection con;
+	private PreparedStatement pstm;
+	private ResultSet rs;
+	
+	// 해당 게시물 번호를 매개변수로 받아와서 댓글 목록 조회
+	public List<PostDTO> selectCommentAll(int postNumber){
+		String sql = "SELECT C.POST_NUMBER, POST_TITLE, POST_CONTENT, COMMENT_CONTENT, C.MEMBER_NUMBER\r\n"
+				+ "FROM TBL_COMMNET C JOIN TBL_POST P\r\n"
+				+ "ON C.POST_NUMBER = P.POST_NUMBER\r\n"
+				+ "WHERE C.POST_NUMBER = ?";
+		
+		List<PostDTO> posts = new ArrayList<>(); 
+		
+		try {
+	         con = DBConnection.getConnection();
+	         pstm = con.prepareStatement(sql);
+	         rs = pstm.executeQuery();
+	         
+	         // 결과 목록이 여러 개 일 수도 있으니 while문 돌리기
+	         while (rs.next()) {
+	        	 PostVO postVO = new PostVO();
+	        	 postVO.setPostNumber(rs.getInt(1));
+	        	 postVO.setPostTitle(rs.getString(2));
+	        	 postVO.setpostContent(rs.getString(3));
+	        	 postVO.setPostViews(rs.getInt(4));
+	        	 postVO.setPostRegisterDate(rs.getString(5));
+	        	 postVO.setMembernumber(rs.getInt(6));
+
+		         posts.add(postVO);
+		     }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         System.out.println("selectSequencepost() 실행 중 에러");
+	      } finally {
+	         try {
+	            DBConnection.close(con, pstm, rs);
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	            System.out.println("selectSequencepost() 닫는 도중 에러");
+	         }
+	      }
+		return posts;
+	}
+}

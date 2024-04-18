@@ -1,0 +1,52 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import util.DBConnection;
+
+public class OwnerDAO {
+	private Connection con;
+	private PreparedStatement pstm;
+	private ResultSet rs;
+	
+	public boolean checkPhone(String phone) {
+		String sql = "SELECT COUNT(OWNER_PHONE) FROM TBL_OWNER\r\n"
+	            + "WHERE OWNER_PHONE = ?";
+		
+	      boolean check = false;
+	      
+	      try {
+	         con = DBConnection.getConnection();
+	         pstm = con.prepareStatement(sql);
+	         pstm.setString(1, phone); // ?의 갯수로 1부터 시작
+	         rs = pstm.executeQuery();
+	         
+//	       결과행 하나 가져오기.
+	         rs.next();
+	         
+//	         id 를 만들 수 있으면 true
+//	         중복이 없다면 true
+	         check = rs.getInt(1) == 0;
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         System.out.println("checkId() 실행 중 에러");
+	      } finally {
+	         try {
+	            DBConnection.close(con, pstm, rs);
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	            System.out.println("checkId() 닫는 도중 에러");
+	         }
+	      }
+		return false;
+	}
+	
+	public OwnerVO selectOne() {
+		
+		
+	}
+}

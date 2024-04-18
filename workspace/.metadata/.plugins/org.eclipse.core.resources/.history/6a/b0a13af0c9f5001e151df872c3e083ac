@@ -1,0 +1,58 @@
+package util;
+
+import java.sql.Connection;
+import java.util.List;
+
+import dao.CommentDAO;
+import dao.MemberDAO;
+import dao.PostDAO;
+import dto.CommentDTO;
+import dto.PostDTO;
+import vo.PostVO;
+
+public class Test {
+	public static void main(String[] args) {
+		MemberDAO memberDAO =  new MemberDAO();
+		PostDAO postDAO = new PostDAO();
+		CommentDAO commentDAO = new CommentDAO();
+		
+		// 이름도 같이 가지고 나올 수 있게 해보기
+		System.out.println("여자 회원 수 메소드 구현");
+		int result = memberDAO.womanMember("W");
+		System.out.println("여자 회원은 "+ result + "명 입니다.");
+		System.out.println("=========================================");
+		
+		// 게시물 제목을 매개변수로 보내어 목록 가져오기
+		System.out.println("검색된 게시글만 가져오는 메소드");
+		List<PostVO> postList = postDAO.selectAllpost("코딩");
+	    System.out.println(postList);
+	    System.out.println("=========================================");
+	    
+		// 게시글 조회순으로 목록을 가져오기
+	    System.out.println("조회순으로 게시글을 가져오는 메소드");
+	    List<PostVO> postvoList = postDAO.selectSequencepost();
+	    System.out.println(postvoList);
+	    System.out.println("=========================================");
+	    
+	    // 해당 게시글의 댓글 목록 가져오기
+	    // PostNumber를 매개변수로 보내어 댓글 목록 가져오기!
+	    System.out.println("해당 게시글의 댓글 목록 가져오기");
+	    int postNumber = 22;
+	    if(commentDAO.checkPostNumber(postNumber)) {
+	    	List<PostDTO> postdtoList = commentDAO.selectCommentAll(postNumber);
+		    System.out.println(postdtoList);
+		    System.out.println("=========================================");
+	    }
+	    else {
+	    	System.out.println("게시글 번호를 확인해줘!");
+	    	System.out.println("=========================================");
+	    }
+	    
+	    //해당 회원의 댓글 목록 가져오기
+	    // memberNumber를 넘겨서 댓글 목록 가져오기!
+	    System.out.println("해당 회원의 댓글 목록 가져오기");
+	    List<CommentDTO> commentdtoList = commentDAO.selectCommentOne(18);
+	    System.out.println(commentdtoList);
+	    System.out.println("=========================================");
+	}
+}

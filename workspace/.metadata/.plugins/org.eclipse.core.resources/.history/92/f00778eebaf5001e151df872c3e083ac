@@ -1,0 +1,25 @@
+package util;
+
+import java.sql.Connection;
+import java.util.List;
+
+import dao.MemberDAO;
+import dao.PostDAO;
+import vo.PostVO;
+
+public class Test {
+	public static void main(String[] args) {
+		MemberDAO memberDAO =  new MemberDAO();
+		PostDAO postDAO = new PostDAO();
+		
+		// 이름도 같이 가지고 나올 수 있게 해보기
+		int result = memberDAO.womanMember("W");
+		System.out.println("현재 여자 회원은 "+ result + "명 입니다.");
+		
+		// 게시물 제목을 매개변수로 보내어 목록 가져오기
+		List<PostVO> postList = postDAO.selectAllpost("코딩");
+	    System.out.println(postList);
+	    
+	    // 게시글 조회순으로 목록을 가져오기
+	}
+}

@@ -1,0 +1,13 @@
+package controller;
+
+public class Controller {
+	
+	public Controller() {
+		play();
+	}
+	
+	// 완벽하게 모듈화!
+	private void play() {
+		
+	}
+}

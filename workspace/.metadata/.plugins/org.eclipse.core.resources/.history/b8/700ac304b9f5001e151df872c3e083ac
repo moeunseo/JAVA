@@ -1,0 +1,77 @@
+package vo;
+
+public class PostVO {
+	int postNumber;
+   	String postTitle;
+   	String postContent;
+   	int postViews;
+   	String postRegisterDate;
+   	int membernumber;
+	
+   	public PostVO() {;}
+   	
+   	public PostVO(int postNumber, String postTitle, String postContent, int postViews, String postRegisterDate,
+			int membernumber) {
+		this.postNumber = postNumber;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.postViews = postViews;
+		this.postRegisterDate = postRegisterDate;
+		this.membernumber = membernumber;
+	}
+
+	public int getPostNumber() {
+		return postNumber;
+	}
+
+	public void setPostNumber(int postNumber) {
+		this.postNumber = postNumber;
+	}
+
+	public String getPostTitle() {
+		return postTitle;
+	}
+
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
+
+	public String getpostContent() {
+		return postContent;
+	}
+
+	public void setpostContent(String postContent) {
+		this.postContent = postContent;
+	}
+
+	public int getPostViews() {
+		return postViews;
+	}
+
+	public void setPostViews(int postViews) {
+		this.postViews = postViews;
+	}
+
+	public String getPostRegisterDate() {
+		return postRegisterDate;
+	}
+
+	public void setPostRegisterDate(String postRegisterDate) {
+		this.postRegisterDate = postRegisterDate;
+	}
+
+	public int getMembernumber() {
+		return membernumber;
+	}
+
+	public void setMembernumber(int membernumber) {
+		this.membernumber = membernumber;
+	}
+
+	@Override
+	public String toString() {
+		return "PostVO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
+				+ ", postViews=" + postViews + ", postRegisterDate=" + postRegisterDate + ", member_number="
+				+ membernumber + "]";
+	}
+}

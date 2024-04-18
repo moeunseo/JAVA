@@ -1,0 +1,32 @@
+package dto;
+
+//내 정보를 보는데 내가 추천한 사람의 아이디와 이름도 같이 확인!
+public class UserDTO {
+	private int userNumber;
+	private String userId;
+	private String userPw;
+	private String userName;
+	private String userPhone;
+	private String userBirth;
+	private int userRecommenderNumber;
+	private String recommenderId;
+	private String recommenderName;
+	
+	public UserDTO() {;}
+
+	public UserDTO(int userNumber, String userId, String userPw, String userName, String userPhone, String userBirth,
+			int userRecommenderNumber, String recommenderId, String recommenderName) {
+		this.userNumber = userNumber;
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userName = userName;
+		this.userPhone = userPhone;
+		this.userBirth = userBirth;
+		this.userRecommenderNumber = userRecommenderNumber;
+		this.recommenderId = recommenderId;
+		this.recommenderName = recommenderName;
+	}
+	
+	
+	
+}

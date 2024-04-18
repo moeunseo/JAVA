@@ -1,0 +1,13 @@
+package controller;
+
+public class Controller {
+	public Controller() {
+		play();
+	}
+	
+	private void play() {
+		
+	}
+	
+	
+}

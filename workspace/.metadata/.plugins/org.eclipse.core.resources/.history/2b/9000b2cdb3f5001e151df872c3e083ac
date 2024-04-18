@@ -1,0 +1,50 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import util.DBConnection;
+import vo.CommentVO;
+import vo.PostVo;
+
+public class PostDAO {
+	private Connection con;
+	private PreparedStatement pstm;
+	private ResultSet rs;
+	
+	//검색된 게시글만 가져오기
+	public List<PostVo> selectAllpost(int memberNumber){
+		String sql = "SELECT * FROM TBL_POST\r\n"
+				+ "WHERE POST_TITLE LIKE '%?%'";
+		
+		try {
+	         con = DBConnection.getConnection();
+	         pstm = con.prepareStatement(sql);
+	         pstm.setInt(1, loginUserNumber);
+	         rs = pstm.executeQuery();
+	         
+//	       결과행 하나 가져오기.
+	         rs.next();
+	         
+	         owner.setOwnerNumber(rs.getInt(1));
+	         owner.setOwnerName(rs.getString(2));
+	         owner.setOwnerPhone(rs.getString(3));
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         System.out.println("selectOne() 실행 중 에러");
+	      } finally {
+	         try {
+	            DBConnection.close(con, pstm, rs);
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	            System.out.println("selectOne() 닫는 도중 에러");
+	         }
+	      }
+		return owner;
+	}
+	 
+}

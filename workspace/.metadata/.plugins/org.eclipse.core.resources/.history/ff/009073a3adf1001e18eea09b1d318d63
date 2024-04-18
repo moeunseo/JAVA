@@ -1,0 +1,14 @@
+package dto;
+
+public class UserDTO {
+	private int userNumber;
+	private String userId;
+	private String userPw;
+	private String userName;
+	private String userPhone;
+	private String userBirth;
+	private int userRecommenderNumber;
+	private String RecommenderId;
+	private String RecommenderName;
+	
+}

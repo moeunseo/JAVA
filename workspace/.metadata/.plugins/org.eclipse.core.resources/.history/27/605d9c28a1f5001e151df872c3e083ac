@@ -1,0 +1,28 @@
+package vo;
+
+public class MemberVo {
+	private int memberNumber;
+	private String memberId;
+	private String memberPw;
+	private String memberName;
+	private String memberPhone; 
+	private String memberGender;
+	private String memberRegisterDate;
+	
+	public MemberVo() {;}
+	
+	public MemberVo(int memberNumber, String memberId, String memberPw, String memberName, String memberPhone,
+			String memberGender, String memberRegisterDate) {
+		this.memberNumber = memberNumber;
+		this.memberId = memberId;
+		this.memberPw = memberPw;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberGender = memberGender;
+		this.memberRegisterDate = memberRegisterDate;
+	}
+	
+	
+	
+	
+}

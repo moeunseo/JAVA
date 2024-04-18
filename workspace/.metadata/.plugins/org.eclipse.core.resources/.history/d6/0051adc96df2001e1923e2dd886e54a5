@@ -1,0 +1,14 @@
+package controller;
+
+public class Controller {
+	
+	// 메인함수에서는 이 생성자만 부를 수 있다!
+	public Controller() {
+		play();
+	}
+	
+	// 완벽하게 모듈화!
+	private void play() {
+		
+	}
+}

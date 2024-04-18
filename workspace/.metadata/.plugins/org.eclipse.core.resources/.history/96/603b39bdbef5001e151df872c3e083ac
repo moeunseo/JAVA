@@ -1,0 +1,9 @@
+package dto;
+
+public class PostDTO {
+	int POST_NUMBER;
+	String POST_TITLE;
+	String POST_CONTENT;
+	String COMMENT_CONTENT;
+	int MEMBER_NUMBER;
+}

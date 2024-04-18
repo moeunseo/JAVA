@@ -1,0 +1,13 @@
+package vo;
+
+public class MemberVo {
+	private int memberNumber;
+	private String memberId;
+	private String memberPw;
+	private String memberName;
+	private String memberPhone; 
+	private String memberGender;
+	private String memberRegisterDate;
+	
+	
+}
